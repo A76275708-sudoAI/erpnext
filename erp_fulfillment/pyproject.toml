@@ -1,0 +1,14 @@
+[project]
+name = "erp_fulfillment"
+version = "0.1.0"
+description = "ERP v1 fulfillment adapters + guards (offline PlatformShipPushed ban, DN cancel ban)"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "A76275708-sudoAI" }]
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["erp_fulfillment*"]
