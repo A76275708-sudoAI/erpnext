@@ -92,7 +92,18 @@ Admin UI may show Cancel but must go through the whitelisted method (not stock C
 | G3b | EC SO missing `platform_order_no` or `shop_id` | hard reject / exception pool |
 | G3c | Explicit label reprint without bumping `reprint_count` | hard reject |
 
-Hook module placeholder path (when app exists):
+D6 hook modules (live in `erp_fulfillment`):
+
+```
+erp_fulfillment/erp_fulfillment/guards/
+  platform_push.py
+  delivery_note_cancel.py
+  sales_order_validate.py
+```
+
+Registered in `erp_fulfillment/erp_fulfillment/hooks.py` (`Sales Order.validate`, `Delivery Note.before_cancel`).
+
+Former placeholder path (when app exists):
 
 ```
 erp_fulfillment/erp_fulfillment/guards/

@@ -1,5 +1,9 @@
-"""ERP v1 D5 stubs — not installed as an app; reference implementations for guards.
+"""ERP v1 stubs — D5 placeholders; D6 runtime lives in sibling app erp_fulfillment."""
 
-Wire these from a future erp_fulfillment app hooks.py. Do not import from core
-DocType controllers until the app exists.
-"""
+from erpnext.erp_v1_stubs.guards import (  # noqa: F401
+    ERR_DN_CANCEL,
+    ERR_OFFLINE_PUSH,
+    assert_delivery_note_cancel_allowed,
+    assert_platform_push_allowed,
+    is_offline_channel,
+)

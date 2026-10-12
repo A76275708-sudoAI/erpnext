@@ -1,10 +1,11 @@
-# ERP v1 — D5 Skeleton Specs
+# ERP v1 — Specs + D6 fulfillment app
 
 > Pin: `erp-v1/base` ← upstream ERPNext `v15.122.0` (`bfd8100`)  
 > Decision (D4): fork deep + fulfillment adapters outside SLE core  
-> Audience: engineers implementing Custom Fields / hooks / roles on this fork
+> D5: field/guard/role specs + JSON fixtures  
+> D6: `erp_fulfillment` app package, hooks, fixture import path, install scripts
 
-## Contents
+## Specs
 
 | File | Purpose |
 |------|---------|
@@ -12,28 +13,30 @@
 | [guards.md](./guards.md) | Hard reject: offline PlatformShipPushed; DN cancel policy |
 | [roles.md](./roles.md) | 跟单/仓管/销售/客服/运营/财务占位/管理员 → ERPNext Role mapping |
 | [events_mapping.md](./events_mapping.md) | PRD event → DocType short table |
-| [adapters.md](./adapters.md) | Mock adapter package layout (no full bench required) |
+| [adapters.md](./adapters.md) | Mock adapter package layout |
+| [install.md](./install.md) | Bench install + fixture import (D6) |
 
-## Fixtures
+## Runtime package
 
-JSON stubs for Custom Field import live under:
+```
+erp_fulfillment/          # Frappe app (install into bench)
+  erp_fulfillment/
+    hooks.py              # Sales Order validate + DN before_cancel
+    guards/               # G1 / G2 / G3
+    adapters/             # Mock B1 / B5 / B7
+  scripts/import_fixtures.py
+```
+
+Fixtures (source of truth until site exists):
 
 ```
 fixtures/erp_v1/custom_fields.json
+fixtures/erp_v1/roles.json
 ```
 
-Import later with bench (when available):
+## Out of scope until confirmed
 
-```bash
-bench --site <site> import-doc fixtures/erp_v1/custom_fields.json
-# or place under hooks fixtures = ["Custom Field"] once an erp_v1 app exists
-```
-
-Until then, treat the JSON as the source of truth for fieldnames/types/options.
-
-## Out of scope for D5
-
-- Full Frappe bench install
-- Real platform keys / printers
-- Workflow engine / GL posting
-- Merging to `develop` or marking PRs ready
+- Merge to `develop` / `main`
+- Mark draft PRs ready
+- Full bench on agent box (see install.md blockers)
+- Real platform keys / printers / GL posting

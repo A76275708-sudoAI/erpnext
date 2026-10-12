@@ -1,0 +1,46 @@
+# ERP v1 D6 — optional local stack for bench (NOT started on the D6 agent box).
+# Requires Docker + ~8 GiB free RAM. Pin images to Frappe v15 line.
+#
+# Usage (on a machine with Docker):
+#   docker compose -f docker-compose.erp-v1.yml up -d
+#   # then follow docs/erp-v1/install.md to create bench / install erp_fulfillment
+#
+# This compose only provisions MariaDB + Redis. Bench itself still runs on the host
+# (or use frappe_docker for a full containerized bench — heavier, out of D6 scope).
+
+services:
+  mariadb:
+    image: docker.io/mariadb:10.6
+    restart: unless-stopped
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --skip-character-set-client-handshake
+      - --skip-innodb-read-only-compressed
+    environment:
+      MYSQL_ROOT_PASSWORD: erp_v1_root
+      MYSQL_DATABASE: unused
+    ports:
+      - "3306:3306"
+    volumes:
+      - erp_v1_mariadb:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  redis-cache:
+    image: docker.io/redis:7-alpine
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+
+  redis-queue:
+    image: docker.io/redis:7-alpine
+    restart: unless-stopped
+    ports:
+      - "6380:6379"
+
+volumes:
+  erp_v1_mariadb:
