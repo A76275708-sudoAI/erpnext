@@ -1,0 +1,247 @@
+/* ERP v1 · Modern flat Desk theme (Figma p8BBd7RMOYfcLIgDssazw7)
+   Reversible: remove app_include_* from hooks + clear-cache to revert.
+   Tokens approximate Figma: flat cards, 12px radius, indigo primary, CN fonts.
+*/
+
+:root {
+  --erp-v1-primary: #4f46e5;
+  --erp-v1-primary-hover: #4338ca;
+  --erp-v1-primary-soft: #eef2ff;
+  --erp-v1-accent: #0ea5e9;
+  --erp-v1-bg: #f4f6fb;
+  --erp-v1-surface: #ffffff;
+  --erp-v1-border: #e5e7eb;
+  --erp-v1-text: #111827;
+  --erp-v1-muted: #6b7280;
+  --erp-v1-success: #10b981;
+  --erp-v1-warning: #f59e0b;
+  --erp-v1-danger: #ef4444;
+  --erp-v1-radius: 12px;
+  --erp-v1-radius-sm: 8px;
+  --erp-v1-shadow: 0 1px 2px rgba(17, 24, 39, 0.04), 0 4px 16px rgba(17, 24, 39, 0.06);
+  --erp-v1-font: "PingFang SC", "Noto Sans SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "Source Han Sans SC", system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* —— Global —— */
+body.frappe-desk,
+body.web-page,
+.desk-page,
+.layout-main-section,
+.page-container,
+.navbar,
+.sidebar-menu,
+.list-row,
+.widget,
+.form-layout {
+  font-family: var(--erp-v1-font) !important;
+}
+
+body.frappe-desk {
+  background: var(--erp-v1-bg) !important;
+  color: var(--erp-v1-text);
+}
+
+/* —— Navbar / topbar polish —— */
+.navbar,
+header.navbar,
+.navbar.navbar-expand {
+  background: var(--erp-v1-surface) !important;
+  border-bottom: 1px solid var(--erp-v1-border) !important;
+  box-shadow: none !important;
+  min-height: 56px;
+}
+
+.navbar .navbar-brand,
+.navbar .nav-link {
+  color: var(--erp-v1-text) !important;
+}
+
+/* Awesomebar */
+.awesomebar,
+#navbar-search,
+input#navbar-search,
+.form-control.awesomplete > input {
+  border-radius: 999px !important;
+  background: var(--erp-v1-bg) !important;
+  border: 1px solid var(--erp-v1-border) !important;
+  box-shadow: none !important;
+}
+
+/* —— Left sidebar —— */
+.desk-sidebar,
+.list-sidebar,
+.layout-side-section,
+.sidebar-menu,
+body[data-route] .desk-sidebar {
+  background: var(--erp-v1-surface) !important;
+  border-right: 1px solid var(--erp-v1-border) !important;
+}
+
+.desk-sidebar .standard-sidebar-item,
+.desk-sidebar .sidebar-item-container .item-anchor,
+.standard-sidebar-label {
+  border-radius: var(--erp-v1-radius-sm);
+  color: var(--erp-v1-text);
+}
+
+.desk-sidebar .standard-sidebar-item:hover,
+.desk-sidebar .sidebar-item-container .item-anchor:hover {
+  background: var(--erp-v1-primary-soft) !important;
+  color: var(--erp-v1-primary) !important;
+}
+
+.desk-sidebar .standard-sidebar-item.selected,
+.desk-sidebar .sidebar-item-container.selected .item-anchor,
+.desk-sidebar .standard-sidebar-item[aria-selected="true"] {
+  background: var(--erp-v1-primary-soft) !important;
+  color: var(--erp-v1-primary) !important;
+  font-weight: 600;
+}
+
+/* —— Cards / widgets (workspace) —— */
+.widget,
+.codex-editor,
+.workspace-card,
+.shortcut-widget-box,
+.number-widget-box,
+.links-widget-box,
+.dashboard-widget-box,
+.ce-block__content .widget,
+div[data-widget-name],
+.frappe-card,
+.form-dashboard-section,
+.layout-main-section-wrapper .form-layout,
+.list-row-container,
+.page-card,
+.widget.dashboard-widget-box,
+.widget.shortcut-widget-box,
+.widget.links-widget-box,
+.widget.number-widget-box,
+.widget.onboarding-widget-box {
+  background: var(--erp-v1-surface) !important;
+  border: 1px solid var(--erp-v1-border) !important;
+  border-radius: var(--erp-v1-radius) !important;
+  box-shadow: var(--erp-v1-shadow) !important;
+}
+
+.shortcut-widget-box,
+.widget.shortcut-widget-box {
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.shortcut-widget-box:hover,
+.widget.shortcut-widget-box:hover {
+  transform: translateY(-2px);
+  border-color: #c7d2fe !important;
+  box-shadow: 0 8px 24px rgba(79, 70, 229, 0.12) !important;
+}
+
+.widget .widget-head,
+.widget .widget-title {
+  color: var(--erp-v1-text) !important;
+  font-weight: 600;
+}
+
+/* Number / metric cards */
+.number-widget-box .widget-body,
+.number-widget-box .number {
+  color: var(--erp-v1-text);
+}
+
+.number-widget-box .number {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* —— Primary buttons / accents —— */
+.btn-primary,
+.btn.btn-primary,
+button.btn-primary {
+  background: var(--erp-v1-primary) !important;
+  border-color: var(--erp-v1-primary) !important;
+  border-radius: var(--erp-v1-radius-sm) !important;
+  box-shadow: none !important;
+}
+
+.btn-primary:hover,
+.btn.btn-primary:hover {
+  background: var(--erp-v1-primary-hover) !important;
+  border-color: var(--erp-v1-primary-hover) !important;
+}
+
+.btn-default,
+.btn-secondary,
+.btn.btn-default {
+  border-radius: var(--erp-v1-radius-sm) !important;
+  border-color: var(--erp-v1-border) !important;
+}
+
+/* Indicator / badge polish */
+.indicator-pill,
+.indicator-pill-right,
+.ellipsis.indicator-pill {
+  border-radius: 999px !important;
+}
+
+/* —— List / form surfaces —— */
+.list-row,
+.list-row-head {
+  border-color: var(--erp-v1-border) !important;
+}
+
+.frappe-control .control-input input,
+.frappe-control .control-input select,
+.frappe-control .control-input textarea,
+.form-control,
+.input-with-feedback {
+  border-radius: var(--erp-v1-radius-sm) !important;
+}
+
+.page-head,
+.page-head .page-title h3,
+.page-title .title-text {
+  color: var(--erp-v1-text);
+  font-weight: 650;
+}
+
+/* —— Login page (web_include) —— */
+body.web-page .page-card,
+.for-login .page-card,
+.login-content.page-card {
+  border-radius: 16px !important;
+  box-shadow: var(--erp-v1-shadow) !important;
+  border: 1px solid var(--erp-v1-border) !important;
+}
+
+body.web-page .btn-login,
+.for-login .btn-primary {
+  background: var(--erp-v1-primary) !important;
+  border-color: var(--erp-v1-primary) !important;
+  border-radius: var(--erp-v1-radius-sm) !important;
+}
+
+/* Soft page background behind login */
+.for-login,
+body[data-path="login"] {
+  background: linear-gradient(160deg, #eef2ff 0%, #f4f6fb 45%, #f8fafc 100%) !important;
+}
+
+/* —— Scrollbar (webkit) —— */
+.frappe-desk ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.frappe-desk ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 8px;
+}
+.frappe-desk ::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Mark body so JS can detect theme loaded */
+body.erp-v1-modern-theme {
+  /* no-op marker */
+}
