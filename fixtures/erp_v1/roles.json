@@ -1,0 +1,51 @@
+[
+  {
+    "doctype": "Role",
+    "role_name": "ERP v1 跟单",
+    "desk_access": 1,
+    "is_custom": 1,
+    "name": "ERP v1 跟单"
+  },
+  {
+    "doctype": "Role",
+    "role_name": "ERP v1 仓管",
+    "desk_access": 1,
+    "is_custom": 1,
+    "name": "ERP v1 仓管"
+  },
+  {
+    "doctype": "Role",
+    "role_name": "ERP v1 销售",
+    "desk_access": 1,
+    "is_custom": 1,
+    "name": "ERP v1 销售"
+  },
+  {
+    "doctype": "Role",
+    "role_name": "ERP v1 客服",
+    "desk_access": 1,
+    "is_custom": 1,
+    "name": "ERP v1 客服"
+  },
+  {
+    "doctype": "Role",
+    "role_name": "ERP v1 运营",
+    "desk_access": 1,
+    "is_custom": 1,
+    "name": "ERP v1 运营"
+  },
+  {
+    "doctype": "Role",
+    "role_name": "ERP v1 财务",
+    "desk_access": 1,
+    "is_custom": 1,
+    "name": "ERP v1 财务"
+  },
+  {
+    "doctype": "Role",
+    "role_name": "ERP v1 管理员",
+    "desk_access": 1,
+    "is_custom": 1,
+    "name": "ERP v1 管理员"
+  }
+]
