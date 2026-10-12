@@ -38,3 +38,11 @@ override_whitelisted_methods = {}
 
 # Scheduled / background: none in D6
 # scheduler_events = {}
+
+
+# —— ERP v1 modern Desk UI (Figma p8BBd7RMOYfcLIgDssazw7) ——
+# Reversible: delete these four lines + public/css|js desk_modern.* and clear-cache.
+app_include_css = ["/assets/erp_fulfillment/css/desk_modern.css?v=2"]
+app_include_js = ["/assets/erp_fulfillment/js/desk_modern.js?v=2"]
+web_include_css = ["/assets/erp_fulfillment/css/desk_modern.css?v=2"]
+web_include_js = ["/assets/erp_fulfillment/js/desk_modern.js?v=2"]

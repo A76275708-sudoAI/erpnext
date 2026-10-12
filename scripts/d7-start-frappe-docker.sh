@@ -46,6 +46,11 @@ for i in $(seq 1 60); do
   code=$(curl -sS -o /dev/null -w '%{http_code}' http://127.0.0.1:8080/login || true)
   if [[ "$code" == "200" ]]; then
     echo "OK http://127.0.0.1:8080  (Administrator / admin)"
+    # Re-link erp_fulfillment desk theme assets (sites/assets is per-container, not on volume)
+    LINK_SCRIPT="$REPO_ROOT/erp_fulfillment/scripts/link_desk_assets.sh"
+    if [[ -x "$LINK_SCRIPT" ]]; then
+      COMPOSE_FILE="$COMPOSE_FILE" "$LINK_SCRIPT" || true
+    fi
     exit 0
   fi
   sleep 5
